@@ -1,0 +1,25 @@
+11 circlecross
+6 SINGLE
+7 TASK_ID
+9 input.txt
+7 TASK_ID
+10 output.txt
+1
+0
+52 ABCCABDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ
+1 1
+1
+22 src/juniorAndrade/main
+16 -Xmx256m -Xss64m
+4 Main
+30 juniorAndrade.main.circlecross
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2017.02.12
+12 USACOFEB2017
+1
+38 juniorAndrade.lib.utils.io.InputReader
+39 juniorAndrade.lib.utils.io.OutputWriter
+0
+0

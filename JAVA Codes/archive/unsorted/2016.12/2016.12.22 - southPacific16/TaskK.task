@@ -1,0 +1,36 @@
+5 TaskK
+6 SINGLE
+8 STANDARD
+9 input.txt
+8 STANDARD
+10 output.txt
+3
+0
+20 BattlestarGalactica
+
+9 Kangaroos
+1
+1
+17 RiddlesInTheDark
+
+5 Kiwis
+1
+2
+12 Hexadecimal
+
+14 Feud continues
+1
+22 src/juniorAndrade/main
+16 -Xmx256m -Xss64m
+4 Main
+24 juniorAndrade.main.TaskK
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.12.22
+14 southPacific16
+1
+38 juniorAndrade.lib.utils.io.InputReader
+39 juniorAndrade.lib.utils.io.OutputWriter
+0
+0

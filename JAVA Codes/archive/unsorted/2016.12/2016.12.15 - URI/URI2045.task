@@ -1,0 +1,53 @@
+7 URI2045
+6 SINGLE
+8 STANDARD
+9 input.txt
+8 STANDARD
+10 output.txt
+1
+0
+97 8
+1 5
+3 5
+3 3
+4 4
+4 5
+5 5
+5 1
+1 1
+2 4
+2
+4 3
+6 3
+8
+1 5
+3 5
+3 3
+4 4
+4 5
+5 5
+5 1
+1 1
+2 4
+2
+4 3
+6 3
+0
+49 Instancia 1
+soldado 1 defender
+soldado 2 espanhol
+1
+22 src/juniorAndrade/main
+16 -Xmx256m -Xss64m
+4 Main
+26 juniorAndrade.main.URI2045
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.12.15
+3 URI
+1
+38 juniorAndrade.lib.utils.io.InputReader
+39 juniorAndrade.lib.utils.io.OutputWriter
+0
+0

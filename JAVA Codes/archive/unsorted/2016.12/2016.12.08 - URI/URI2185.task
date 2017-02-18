@@ -1,0 +1,37 @@
+7 URI2185
+6 SINGLE
+8 STANDARD
+9 input.txt
+8 STANDARD
+10 output.txt
+1
+0
+55 8 6
+1 2 3 4 5 6 7 8
+4 6 5
+7 8 0
+1 8 0
+1 1 1
+1 1 8
+1 8 5
+57 Possivel
+Possivel
+Impossivel
+Possivel
+Possivel
+Impossivel
+1
+22 src/juniorAndrade/main
+16 -Xmx256m -Xss64m
+4 Main
+26 juniorAndrade.main.URI2185
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.12.08
+3 URI
+1
+38 juniorAndrade.lib.utils.io.InputReader
+39 juniorAndrade.lib.utils.io.OutputWriter
+0
+0

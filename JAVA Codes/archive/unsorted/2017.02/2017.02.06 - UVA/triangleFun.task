@@ -1,0 +1,28 @@
+11 triangleFun
+12 MULTI_NUMBER
+8 STANDARD
+9 input.txt
+8 STANDARD
+10 output.txt
+1
+0
+108 2
+3994.707 9251.677 4152.916 7157.810 5156.835 2551.972
+6903.233 3540.932 5171.382 3708.015 213.959 2519.852
+12 98099
+206144
+1
+22 src/juniorAndrade/main
+16 -Xmx256m -Xss64m
+4 Main
+30 juniorAndrade.main.triangleFun
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2017.02.06
+3 UVA
+1
+38 juniorAndrade.lib.utils.io.InputReader
+39 juniorAndrade.lib.utils.io.OutputWriter
+0
+0

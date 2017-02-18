@@ -1,0 +1,52 @@
+8 ANKTRAIN
+12 MULTI_NUMBER
+8 STANDARD
+9 input.txt
+8 STANDARD
+10 output.txt
+2
+0
+9 3
+1
+5
+3 
+
+12 4LB
+2MB
+6UB
+
+1
+1
+25 8
+9
+10
+11
+12
+13
+14
+15
+16
+
+31 4LB
+5MB
+6UB
+1LB
+2MB
+3UB
+8SU
+7SL
+1
+22 src/juniorAndrade/main
+16 -Xmx256m -Xss64m
+4 Main
+27 juniorAndrade.main.ANKTRAIN
+39 net.egork.chelper.checkers.TokenChecker
+0 
+0
+10 2016.12.02
+16 Codechef - DEC16
+1
+38 juniorAndrade.lib.utils.io.InputReader
+39 juniorAndrade.lib.utils.io.OutputWriter
+0
+0
