@@ -24,3 +24,16 @@ typedef vector< ii > vii;
 #else
 #define debug(args...) fprintf(stderr,args)
 #endif
+
+class <%:class-name%> {
+public:
+	<%:return-type%> <%:method-name%>(<%:param-type-list%>);
+};
+
+<%:return-type%> <%:class-name%>::<%:method-name%>(<%:param-list%>) {
+	<%:set-caret%>
+}
+
+<%:testing-code%>
+//Powered by [KawigiEdit] 2.0!
+

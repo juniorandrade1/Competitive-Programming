@@ -24,3 +24,25 @@ typedef vector< ii > vii;
 #else
 #define debug(args...) fprintf(stderr,args)
 #endif
+
+const int N = 101;
+
+char s[N];
+int k;
+
+int main() {
+  scanf(" %s %d", s, &k);
+  int len = strlen(s);
+  int qtd = 0;
+  int p = len - 1;
+  while(k && p) {
+    if(s[p] == '0') {
+      k--;
+    }
+    else qtd++;
+    p--;
+  }
+  if(k) printf("%d\n", len - 1);
+  else printf("%d\n", qtd);
+  return 0;
+}

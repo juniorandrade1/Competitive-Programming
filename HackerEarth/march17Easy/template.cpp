@@ -24,3 +24,15 @@ typedef vector< ii > vii;
 #else
 #define debug(args...) fprintf(stderr,args)
 #endif
+
+const int N = 2 * (ll)(1e5) + 10;
+
+inline void main2() {
+  
+}
+
+int main() {
+  int t; scanf("%d", &t);
+  while(t--) main2();
+  return 0;
+}

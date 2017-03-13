@@ -24,3 +24,25 @@ typedef vector< ii > vii;
 #else
 #define debug(args...) fprintf(stderr,args)
 #endif
+
+const int N = 101;
+
+int a[N], b[N], n;
+int ca[N], cb[N];
+
+int main() {
+  scanf("%d", &n);
+  for(int i = 0; i < n; ++i) scanf("%d", a + i), ca[a[i]]++;
+  for(int i = 0; i < n; ++i) scanf("%d", b + i), cb[b[i]]++;
+  int s = 0;
+  for(int i = 1; i <= 5; ++i) {
+    if((ca[i] + cb[i]) % 2) {
+      puts("-1");
+      exit(0);
+    }
+    int d = (ca[i] + cb[i]) / 2;
+    s += abs(d - ca[i]);
+  }
+  printf("%d\n", s / 2);
+  return 0;
+}

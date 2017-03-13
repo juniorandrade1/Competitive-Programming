@@ -24,3 +24,21 @@ typedef vector< ii > vii;
 #else
 #define debug(args...) fprintf(stderr,args)
 #endif
+
+const int N = 2 * (ll)(1e5) + 10;
+
+inline void main2() {
+  int n, k; scanf("%d %d", &n, &k);
+  int a = 0;
+  for(int i = 0; i < n; ++i) {
+    int f; scanf("%d", &f);
+    a = max(a, k - f);
+  }
+  printf("%d\n", a); 
+}
+
+int main() {
+  int t; scanf("%d", &t);
+  while(t--) main2();
+  return 0;
+}
