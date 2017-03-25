@@ -29,16 +29,19 @@ typedef vector< ii > vii;
 const int N = 5e5 + 10;
 
 int is[N];
-int p[N], sz = 0;
+ll p[N], sz = 0;
 
 void sieve() {
   is[0] = 0;
   is[1] = 1;
-  is[2] = 2;
   for(int i = 2; i < N; ++i) {
     if(!is[i]) {
       p[sz++] = i;
-      for(int j = 1; j * i < N; ++j) is[i * j] = i;
+      ll k = (ll)i * (ll)i;
+      while(k < N) {
+        is[k] = 1;
+        k += i;
+      }
     }
   }
   debug("SIZE OF SIEVE = %d\n", sz);
@@ -46,61 +49,38 @@ void sieve() {
 
 ll qtd[N];
 ll v[N], n;
-map< vi, bool > ex, ex2;
-ll rsp = 0;
+ll sum[N];
+ll pd[52][N];
+bool memo[52][N];
+ll nxt[52];
 
-void keepSolve(ll s) {
-  rsp += (is[s] == s);
-  for(int i = 0; i < sz; ++i) {
-    if(p[sz] <= s) continue;
-    rsp += qtd[p[sz] - s];
+ll func(int pos, int prime) {
+  if(prime < 0) return 0;
+  if(prime > sum[pos]) return 0;
+  if(pos == n) return prime == 0;
+  if(memo[pos][prime]) return pd[pos][prime];
+  memo[pos][prime] = 1;
+  ll ret = func(nxt[pos] + 1, prime);
+  for(int i = pos; i <= nxt[pos]; ++i) {
+    ret += func(nxt[pos] + 1, prime - (i - pos + 1) * v[pos]);
   }
+  return pd[pos][prime] = ret;
 }
 
 int main() {
   sieve();
   scanf("%lld", &n);
   for(int i = 0; i < n; ++i) scanf("%lld", v + i);
-
   sort(v, v + n);
-
-  int mid = (n / 2);
-
-  for(int i = 0; i < (1 << mid); ++i) {
-    vi o;
-    ll sum = 0;
-    for(int j = 0; j < mid; ++j) if((i >> j) & 1) {
-      o.pb(v[j]);
-      sum += v[j];
-    }
-    if(ex.find(o) == ex.end()) {
-      ex[o] = 1;
-      qtd[sum]++;
-      rsp += (is[sum] == sum);
+  for(int i = n - 1; i >= 0; --i) sum[i] = sum[i + 1] + v[i];
+  for(int i = 0; i < n; ++i) {
+    for(int j = i; j < n; ++j) {
+      if(v[i] != v[j]) break;
+      nxt[i] = j;
     }
   }
-
-  int q = 0;
-  for(int i = mid + 1; i < n; ++i) v[q++] = v[i];
-
-
-  for(int i = 0; i < q; ++i) {
-    vi o;
-    ll sum = 0;
-    for(int j = 0; j < q; ++j) if((i >> j) & 1) {
-      o.pb(v[j]);
-      sum += v[j];
-    }
-    if(ex2.find(o) == ex2.end()) {
-      ex2[o] = 1;
-      keepSolve(sum);
-    }
-  }
-
-  printf("%lld\n", rsp);
-
-
-
-
+  ll ans = 0;
+  for(int i = 0; i < sz; ++i) ans += func(0, p[i]);
+  printf("%lld\n", ans);  
   return 0;
 }
