@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 typedef long long ll;
@@ -26,8 +25,13 @@ typedef vector< ii > vii;
 #define debug(args...) fprintf(stderr,args)
 #endif
 
-const int N = 1e5 + 10;
-
-int main() {
+int  main() {
+  int n = 99999;
+  printf("%d\n", n);
+  for(int i = 0; i < n; i += 3) {
+    if(i) printf(" ");
+    printf("1000000000 -1000000000 -1000000000");
+  }
+  printf("\n");
   return 0;
 }

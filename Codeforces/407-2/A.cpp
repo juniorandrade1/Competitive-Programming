@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 typedef long long ll;
@@ -28,6 +27,17 @@ typedef vector< ii > vii;
 
 const int N = 1e5 + 10;
 
+int n, k;
+ll v[N];
+
 int main() {
+  scanf("%d %d", &n, &k);
+  for(int i = 0; i < n; ++i) scanf("%lld", v + i);
+  sort(v, v + n);
+  ll d = 0;
+  for(int i = 0; i < n; ++i) {
+    d += (v[i] + k - 1) / k;
+  }
+  printf("%lld\n", (d + 1) / 2);
   return 0;
 }

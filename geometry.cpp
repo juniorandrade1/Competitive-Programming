@@ -12,6 +12,10 @@ struct Point {
   double distance(Point other) { return hypot(x - other.x, y - other.y); }
   Point operator + (Point other) { return Point(x + other.x, y + other.y); }
   Point operator - (Point other) { return Point(x - other.x, y - other.y); }
+  point operator / (double t) { return Point(x / t, y / t); }
+  double operator * (Point q) {return x * q.x + y * q.y;}//a*b = |a||b|cos(ang)
+  double operator % (Point q) {return x * q.y - y * q.x;}//a%b = |a||b|sin(ang)
+  double polar() { return ((y > -eps) ? atan2(y,x) : 2*Pi + atan2(y,x)); }
   Point rotate(double t) { return Point(x * cos(t) - y * sin(t), x * sin(t) + y * cos(t)); }
   Point rotateAroundPoint(double t, Point p) {
     Point foo = Point(x - p.x, y - p.y);
@@ -51,6 +55,14 @@ struct Line {
     return Line(-b, a, b * point.x - a * point.y);
   }
 };
+
+double seg_distance(Point p, Point q, Point r) {
+  Point A = r - q, B = r - p, C = q - p;
+  double a = A * A, b = B * B, c = C * C;
+  if (cmp(b, a + c) >= 0) return sqrt(a);
+  else if (cmp(a, b + c) >= 0) return sqrt(b);
+  else 
+}
 
 struct Circle {
   double x, y, r;
