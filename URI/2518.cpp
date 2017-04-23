@@ -17,6 +17,7 @@ typedef vector< ii > vii;
 #define DEG_to_RAD(X)   (X * PI / 180)
 #define F first
 #define S second
+#define PI 2*acos(0)
 
 #ifdef ONLINE_JUDGE
 #define debug(args...)
@@ -24,8 +25,12 @@ typedef vector< ii > vii;
 #define debug(args...) fprintf(stderr,args)
 #endif
 
-const int N = 1e5 + 10;
+
 
 int main() {
+  double n, h, c, l;
+  while(scanf("%lf %lf %lf %lf", &n, &h, &c, &l) != EOF) {
+    printf("%.4lf\n", (n * hypot(h, c) * l) / 10000.);
+  }
   return 0;
 }

@@ -17,14 +17,13 @@ typedef vector< ii > vii;
 #define DEG_to_RAD(X)   (X * PI / 180)
 #define F first
 #define S second
+#define PI 2*acos(0)
 
 #ifdef ONLINE_JUDGE
 #define debug(args...)
 #else
 #define debug(args...) fprintf(stderr,args)
 #endif
-
-const int N = 1e5 + 10;
 
 int main() {
   return 0;

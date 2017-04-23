@@ -24,8 +24,15 @@ typedef vector< ii > vii;
 #define debug(args...) fprintf(stderr,args)
 #endif
 
-const int N = 1e5 + 10;
+const int N = 50;
+
+inline void main2(int _test) {
+  
+}
+
 
 int main() {
+  int test = 1;
+  while(scanf("%d", &n) != EOF) main2(test++);
   return 0;
 }

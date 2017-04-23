@@ -54,15 +54,47 @@ struct Line {
   Line perpendicular(Point point) {
     return Line(-b, a, b * point.x - a * point.y);
   }
+  double distance(Point r) {
+    Point p, q;
+    if(fabs(b) < eps) {
+      p = Point(-c / a, 0);
+      q = Point((-c - b) / a, 1);
+    }
+    else {
+      p = Point(0, -c / b);
+      q = Point(1, (-c - a) / b);
+    }
+    Point A = r - q, B = r - p, C = q - p;
+    double a = A * A, b = B * B, c = C * C;
+    return fabs(A % B) / sqrt(c);
+  }
 };
 
-double seg_distance(Point p, Point q, Point r) {
-  Point A = r - q, B = r - p, C = q - p;
-  double a = A * A, b = B * B, c = C * C;
-  if (cmp(b, a + c) >= 0) return sqrt(a);
-  else if (cmp(a, b + c) >= 0) return sqrt(b);
-  else 
-}
+class GeometricUtils {
+  public:
+    GeometricUtils(){};
+    static double cross(Point a, Point b, Point c) {
+      double dx1 = (a.x - b.x), dy1 = (a.y - b.y);
+      double dx2 = (c.x - b.x), dy2 = (c.y - b.y);
+      return (dx1 * dy2 - dx2 * dy1);
+    }
+    static bool above(Point a, Point b, Point c) {
+      return cross(a, b, c) < 0;
+    }
+    static bool under(Point a, Point b, Point c) {
+      return cross(a, b, c) > 0;
+    }
+    static bool sameLine(Point a, Point b, Point c) {
+      return cross(a, b, c) < eps;
+    }
+    static double segDistance(point p, point q, point r) {
+      point A = r - q, B = r - p, C = q - p;
+      double a = A * A, b = B * B, c = C * C;
+      if (cmp(b, a + c) >= 0) return sqrt(a);
+      else if (cmp(a, b + c) >= 0) return sqrt(b);
+      else return fabs(A % B) / sqrt(c);
+    }
+};
 
 struct Circle {
   double x, y, r;
@@ -109,12 +141,28 @@ struct Circle {
 Point getCircuncenter(Point a, Point b, Point c) {
   Line l1 = Line(a, b);
   double xab = (a.x + b.x) * 0.5, yab = (a.y + b.y) * 0.5;
-
   Line l2 = Line(b, c);
   double xbc = (b.x + c.x) * 0.5, ybc = (b.y + c.y) * 0.5;
-
   l1 = l1.perpendicular(Point(xab, yab));
   l2 = l2.perpendicular(Point(xbc, ybc));
-
   return l1.intersect(l2);
+}
+
+
+vector< Point > ConvexHull(vector< Point > &polygon) {
+  sort(polygon.begin(), polygon.end());
+  vector< Point > down, up;
+  up.pb(polygon[0]);
+  up.pb(polygon[1]);
+  down.pb(polygon[0]);
+  down.pb(polygon[1]);
+  for(int i = 2; i < polygon.size(); ++i) {
+    while(up.size() >= 2 && GeometricUtils.above(up[up.size() - 2], up[up.size() - 1], polygon[i])) up.pop_back();
+    while(down.size() >= 2 && GeometricUtils.under(down[down.size() - 2], down[down.size() - 1], polygon[i])) down.pop_back();
+    up.pb(polygon[i]);
+    down.pb(polygon[i]);
+  }
+  vector< Point > sol = up;
+  for(int i = down.size() - 2; i > 0; --i) sol.pb(down[i]);
+  return sol;
 }
