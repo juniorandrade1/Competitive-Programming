@@ -12,15 +12,14 @@ struct Point {
   double distance(Point other) { return hypot(x - other.x, y - other.y); }
   Point operator + (Point other) { return Point(x + other.x, y + other.y); }
   Point operator - (Point other) { return Point(x - other.x, y - other.y); }
-  point operator / (double t) { return Point(x / t, y / t); }
-  double operator * (Point q) {return x * q.x + y * q.y;}//a*b = |a||b|cos(ang)
-  double operator % (Point q) {return x * q.y - y * q.x;}//a%b = |a||b|sin(ang)
-  double polar() { return ((y > -eps) ? atan2(y,x) : 2*Pi + atan2(y,x)); }
+  Point operator * (double t) { return Point(x * t, y * t); }
+  Point operator / (double t) { return Point(x / t, y / t); }
+  double operator * (Point q) {return x * q.x + y * q.y;} //a*b = |a||b|cos(ang) //Positivo se o vetor B está do mesmo lado do vetor perpendicular a A
+  double operator % (Point q) {return x * q.y - y * q.x;} //a%b = |a||b|sin(ang) //Angle of vectors
+  double polar() { return ((y > -eps) ? atan2(y,x) : 2*pi + atan2(y,x)); }
   Point rotate(double t) { return Point(x * cos(t) - y * sin(t), x * sin(t) + y * cos(t)); }
   Point rotateAroundPoint(double t, Point p) {
-    Point foo = Point(x - p.x, y - p.y);
-    foo = foo.rotate(t);
-    return foo + p;
+    return (this - p).rotate(t) + p;
   }
   bool operator < (Point other) const {
     if(other.x != x) return x < other.x;
@@ -87,8 +86,8 @@ class GeometricUtils {
     static bool sameLine(Point a, Point b, Point c) {
       return cross(a, b, c) < eps;
     }
-    static double segDistance(point p, point q, point r) {
-      point A = r - q, B = r - p, C = q - p;
+    static double segDistance(Point p, Point q, Point r) {
+      Point A = r - q, B = r - p, C = q - p;
       double a = A * A, b = B * B, c = C * C;
       if (cmp(b, a + c) >= 0) return sqrt(a);
       else if (cmp(a, b + c) >= 0) return sqrt(b);
@@ -147,7 +146,6 @@ Point getCircuncenter(Point a, Point b, Point c) {
   l2 = l2.perpendicular(Point(xbc, ybc));
   return l1.intersect(l2);
 }
-
 
 vector< Point > ConvexHull(vector< Point > &polygon) {
   sort(polygon.begin(), polygon.end());

@@ -1,0 +1,6 @@
+Você pode fazer uma busca binária no tempo máximo, e gerar o grafo utilizando arestas que no máximo estejam a um tempo <= tempo da busca binaria.
+ 
+Após isso, pode-se observar que o problema se torna "Dado um grafo bipartido, encontrar o maior numero de casamentos possiveis" em que os nós da esquerda do emparelhamento são os times, e do lado direito são as mesas. 
+
+Eu codei duas soluções, uma n³log(n * m) com ford-fulkerson (algoritmo de fluxo) e outra n * sqrt(v) * log(n * m) com Dinic. A primeira rodou em 1.3 segundos no pior caso, e a segunda em 0.3, então, sugiro um time-limit de 2 segundos. 
+
