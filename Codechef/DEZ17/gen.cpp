@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef long double ld;
+typedef unsigned long long ull;
+typedef pair< ll, ll > ii;
+typedef vector< ll > vi;
+typedef vector< ii > vii;
+
+#define INF 0x3F3F3F3F
+#define LINF 0x3F3F3F3F3F3F3F3FLL
+#define pb push_back
+#define mp make_pair
+#define pq priority_queue
+#define LSONE(s) ((s)&(-s))
+#define DEG_to_RAD(X)   (X * PI / 180)
+#define F first
+#define S second
+
+#ifdef ONLINE_JUDGE
+#define debug(args...)
+#else
+#define debug(args...) fprintf(stderr,args)
+#endif
+
+#define pi acos(-1.0)
+
+
+int main() {
+	int n = 100000;
+	srand(time(NULL));
+	int t = n;
+	printf("%d\n", t);
+	for(int i = 0; i < t; ++i) {
+		int x = rand() % n + 1;
+		int y = rand() % n + 1;
+		int z = rand() % n + 1;
+		int a = rand() % n + 1;
+		int b = rand() % n + 1;
+		int c = rand() % n + 1;
+		printf("%d %d %d %d %d %d\n", x, y, z, a, b, c);
+	}
+  return 0;
+}

@@ -1,0 +1,156 @@
+6
+18
+qtd = 27
+mxEsq = -1
+mxDir = -1
+mnEsq = 3
+mnDir = 9
+left = 1
+right = 9
+
+
+qtd = 9
+mxEsq = -1
+mxDir = -1
+mnEsq = 3
+mnDir = 3
+left = 1
+right = 5
+
+
+qtd = 3
+mxEsq = -1
+mxDir = -1
+mnEsq = 3
+mnDir = 3
+left = 1
+right = 3
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 1
+right = 2
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 1
+right = 1
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 2
+right = 2
+
+
+qtd = 1
+mxEsq = -1
+mxDir = -1
+mnEsq = 3
+mnDir = 3
+left = 3
+right = 3
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 4
+right = 5
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 4
+right = 4
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 5
+right = 5
+
+
+qtd = 4
+mxEsq = -1
+mxDir = -1
+mnEsq = 9
+mnDir = 9
+left = 6
+right = 9
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 6
+right = 7
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 6
+right = 6
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 7
+right = 7
+
+
+qtd = 2
+mxEsq = -1
+mxDir = -1
+mnEsq = 9
+mnDir = 9
+left = 8
+right = 9
+
+
+qtd = 0
+mxEsq = -1
+mxDir = -1
+mnEsq = -1
+mnDir = -1
+left = 8
+right = 8
+
+
+qtd = 1
+mxEsq = -1
+mxDir = -1
+mnEsq = 9
+mnDir = 9
+left = 9
+right = 9
+
+
+27

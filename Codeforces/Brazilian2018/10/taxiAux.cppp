@@ -1,0 +1,120 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+typedef long long ll;
+
+typedef unsigned long long ull;
+typedef pair<ll,ll> ii;
+typedef vector<ll> vi;
+typedef vector< ii > vii;
+
+#define INF 0x3F3F3F3F
+#define LINF 20000000000000000LL
+#define pb push_back
+#define mp make_pair
+#define pq priority_queue
+#define LSONE(s) ((s)&(-s)) //LASTBIT
+#define DEG_to_RAD(X)   (X * PI / 180)
+#define F first
+#define S second
+
+ 
+#ifdef ONLINE_JUDGE
+#define debug(args...)
+#else
+#define debug(args...) fprintf(stderr,args)
+#endif
+
+struct Line {
+  ll m, b;
+  Line(){};
+  Line(ll _m, ll _b) {
+    m = _m;
+    b = _b;
+  }
+  bool operator < (Line other) const {
+    if(m != other.m) return m > other.m;
+    return b < other.b;
+  }
+  ll getVal(ll x) {
+    return m * x + b;
+  }
+};
+
+struct ConvexHull {
+  vector< Line > st;
+  int sp;
+  ConvexHull(){
+    sp = 0;
+  };
+  inline bool needRemove(Line a, Line b, Line c) {
+    return (b.b - a.b) * (a.m - c.m) > (a.m - b.m) * (c.b - a.b);
+  }
+  void add(Line l) {
+    while(st.size() >= 2 && needRemove(st[st.size() - 2], st[st.size() - 1], l)) st.pop_back(); 
+    st.pb(l);
+  }
+  ll query(ll x) {
+    if(st.size() == 0) return LINF;
+    while(sp + 1 < st.size() && st[sp].getVal(x) > st[sp + 1].getVal(x)) sp++;
+    return st[sp].getVal(x);
+  }
+};
+
+const int N = 15 * 8;
+
+int n, q;
+ll dp[N + 1];
+vector< Line > ln[16];
+ConvexHull ch[16];
+
+inline ll solve(ll a, ll b) {
+  for(int i = 0; i <= N; ++i) dp[i] = LINF;
+  dp[0] = 0;
+  for(int i = 1; i <= 15; ++i) for(int j = 0; j <= N; ++j) dp[j] = min(dp[j], dp[max(j - i, 0)] + ch[i].query(b - 1));
+  ll ans = LINF;
+  for(int i = 1; i <= N; ++i) {
+    if(dp[i] == LINF) continue;
+    ll q = a / i;
+    ans = min(ans, q * dp[i] + dp[a % i]);
+  }
+  return ans;
+}
+
+struct Query {
+  ll a, b, id;
+  Query(){};
+  Query(ll _a, ll _b, ll _id) {
+    a = _a;
+    b = _b;
+    id = _id;
+  }
+  bool operator < (Query other) const {
+    if(b != other.b) return b < other.b;
+    return a < other.a;
+  }
+};
+
+vector< Query > allq;
+ll solution[1000010];
+
+int main() {
+  scanf("%d %d", &n, &q);
+  for(int i = 0; i < n; ++i) {
+    int c, s, p; scanf("%d %d %d", &c, &s, &p);
+    ln[c].pb(Line(p, s));
+  }
+  for(int i = 1; i <= 15; ++i) {
+    sort(ln[i].begin(), ln[i].end());
+    for(int j = 0; j < ln[i].size(); ++j) ch[i].add(ln[i][j]);
+  }
+  for(int i = 0; i < q; ++i) {
+    int a, b; scanf("%d %d", &a, &b);
+    allq.pb(Query(a, b, i));
+  }
+  sort(allq.begin(), allq.end());
+  for(int i = 0; i < q; ++i) solution[allq[i].id] = solve(allq[i].a, allq[i].b);
+  for(int i = 0; i < q; ++i) printf("%lld\n", solution[i]);
+  return 0;
+}
