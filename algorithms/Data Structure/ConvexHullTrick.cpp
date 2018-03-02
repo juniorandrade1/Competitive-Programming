@@ -1,5 +1,5 @@
 template <typename T> 
-class ConvexHullTrick {
+class ConvexHullTrick { //Mantains upper_hull
 private:
   const T CHINF = numeric_limits<T>::max() / (T)2.0; //Be careful here with overflow
   struct Line {
