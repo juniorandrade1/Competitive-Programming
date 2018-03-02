@@ -39,17 +39,3 @@ public:
     return st[lo].getVal(x);
   }
 };
-
-struct Edge {
-  int x, y, b, e;
-  Edge(){}; 
-  Edge(int _x, int _y, int _b, int _e) {
-    x = _x;
-    y = _y;
-    b = _b;
-    e = _e;
-  }
-  bool operator < (Edge other) const {
-    return e < other.e;
-  }
-};
