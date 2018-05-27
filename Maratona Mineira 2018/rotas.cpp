@@ -75,11 +75,11 @@ inline bool hasNegativeCycle(double value) {
       int y = g[x][i].F;
       double w = g[x][i].S;
       if(dis[y] > dis[x] + w) {
-        return false;
+        return true;
       }
     }
   }
-  return true;
+  return false;
 }
 
 int main() {
@@ -92,7 +92,7 @@ int main() {
   double lo = 0, hi = 10000000000.0;
   for(int i = 0; i < 100; ++i) {
     double md = (lo + hi) * 0.5;
-    if(hasNegativeCycle(md)) lo = md;
+    if(!hasNegativeCycle(md)) lo = md;
     else hi = md;
   }
   printf("%.10lf\n", lo);
